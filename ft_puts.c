@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 06:53:31 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/09 08:05:44 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/12 08:24:32 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,23 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+
 void	ft_putstr(char *s)
 {
 	if (s)
 		while (*s)
 			ft_putchar(*(s++));
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (s)
+		while (*s)
+			ft_putchar_fd(*(s++), fd);
 }
 
 void	ft_putnbr(int nb)

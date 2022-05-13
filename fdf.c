@@ -6,29 +6,26 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 06:51:57 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/10 11:20:00 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/13 11:05:02 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 /*
-	Discovering:
-	1- Create a window
-	2- Display something on it (drawing a grid on it)
-	
-*/
-
-/*
 	Implementation:
 	1- Creating a Window
 	2- read a given map
+	3-handling Events
+	4-learn about Bresenham Algo
+	5-learn about isometric projection
 	
 */
 
 int	deal_key(int key, void *param)
 {
 	(void)param;
+	printf("Hello from key hook\n");
 	ft_putnbr(key);
 	ft_putchar('\n');
 	if (key == 53)
@@ -67,10 +64,7 @@ void	draw_v_lines(void *m_id, void *w_id, t_point start, t_point end)
 	{
 		y = start.y;
 		while (++y <= end.y)
-		{
 			mlx_pixel_put(m_id, w_id, x, y, COLOR);
-			printf("%d\n", y);
-		}
 		x += inc;
 	}
 }
@@ -83,7 +77,7 @@ void	draw_grid(void *m_id, void *w_id)
 	square.t_l.y = W_H * S_OFF;
 	square.t_r.x = W_W * B_OFF;
 	square.t_r.y = W_H * S_OFF;
-	square.b_l.x = W_W * S_OFF; 
+	square.b_l.x = W_W * S_OFF;
 	square.b_l.y = W_H * B_OFF;
 	square.b_r.x = W_W * B_OFF;
 	square.b_r.y = W_H * B_OFF;
@@ -91,14 +85,22 @@ void	draw_grid(void *m_id, void *w_id)
 	draw_v_lines(m_id, w_id, square.t_l, square.b_r);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	void	*mlx_id;
 	void	*win_id;
+	char	**map;
 
+	manage_error(ac, av);
+	map = read_map(av[1]);
+	if (check_map(map))
+		exit(EXIT_FAILURE);
 	mlx_id = mlx_init();
 	win_id = mlx_new_window(mlx_id, W_W, W_H, "FDF :)");
-	draw_grid(mlx_id, win_id);
+	// plot_line(W_W - 200, W_H - 100, 50, 30, mlx_id, win_id);
+	// plot_line(51, 31, W_W - 99, W_H - 99, mlx_id, win_id);
+	mlx_mouse_hook(win_id, deal_key, (void *)0);
+	mlx_expose_hook(win_id, deal_key, (void *)0);
 	mlx_key_hook(win_id, deal_key, (void *)0);
 	mlx_loop(mlx_id);
 	return (0);

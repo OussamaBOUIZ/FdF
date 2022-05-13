@@ -6,7 +6,8 @@ RM = rm -rf
 
 CC = cc
 
-FUNCTIONS = ft_put.c gnl.c utils.c read_map.c print_map.c ft_split.c fdf.c
+FUNCTIONS = manage_error.c ft_puts.c gnl.c utils.c read_map.c print_map.c ft_split.c fdf.c \
+			check_map.c ft_atoi.c bresenham.c\
 
 OBJECTS =  $(FUNCTIONS:.c=.o)
 

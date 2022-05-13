@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   manage_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 09:13:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/12 08:19:01 by obouizga         ###   ########.fr       */
+/*   Created: 2022/05/12 08:08:30 by obouizga          #+#    #+#             */
+/*   Updated: 2022/05/12 09:45:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-char	**read_map(char *file)
+void	manage_error(int ac, char **av)
 {
-	int		fd;
-	char	*map_s;
-	char	*next_l;
-	char	**map;
-
-	fd = open(file, O_RDONLY);
-	map_s = get_next_line(fd);
-	next_l = get_next_line(fd);
-	while (next_l)
-	{
-		map_s = ft_strjoin(map_s, next_l);
-		free(next_l);
-		next_l = get_next_line(fd);
-	}
-	map = ft_split(map_s, '\n');
-	free(map_s);
-	return (map);
+	(void)av;
+	if (ac != 2)
+		exit(EXIT_FAILURE);
+	if (-1 == open(av[1], O_RDONLY))
+		exit(EXIT_FAILURE);
 }
