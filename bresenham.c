@@ -6,71 +6,66 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 10:54:09 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/13 10:51:49 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:52:26 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-double	get_slope(double x0, double y0, double x1, double y1)
+void	check_neg(double *x0, double *y0, double *x1, double *y1)
 {
-	return ((y1 - y0) / (x1 - x0));
+	if (*x0 > *x1 && *y0 > *y1)
+	{
+		swap(x0, x1);
+		swap(y0, y1);
+	}
 }
 
-double	get_const(double m, double x, double y)
-{
-	return (y - m * x);
-}
-
-double	foo(double x, double y, double m, double b)
-{
-	return (m * x - y + b);
-}
-
-void	plot_line(double x0, double y0, double x1, double y1, void *mlx_id, void *win_id)
+void	plot_line(t_iso a, t_iso b, void *mlx_id, void *win_id)
 {
 	int	x;
 	int	y;
 	int	dx;
-	int dy;
-	int D;
+	int	dy;
+	int	d;
 
-	// m = get_slope(x0, y0, x1, y1);
-	// b = get_const(m, x0, y0);
-	// printf("The slope's %f\n", m);
-	// printf("The const's %f\n", b);
-	dx = x1 - x0;
-	dy = y1 - y0;
-	D = 2 * dy - dx;
-	x = x0;
-	y = y0;
-	while (x <= x1)
+	check_neg(&(a.x), &(a.y), &(b.x), &(b.y));
+	dx = b.x - a.x;
+	dy = b.y - a.y;
+	d = 2 * dy - dx;
+	x = a.x;
+	y = a.y;
+	while (x <= b.x)
 	{
-		printf("( %i , %i )\n", x, y);
 		mlx_pixel_put(mlx_id, win_id, x, y, COLOR);
-		if (D > 0)
+		if (d > 0)
 		{
 			y++;
-			D = D - 2 * dx;
+			d = d - 2 * (dy - dx);
 		}
-		D = D + 2 * dy;
+		else
+			d = d + 2 * dy;
 		x++;
 	}
 }
-
-
 /*
-plotLine(x0, y0, x1, y1)
-    dx = x1 - x0
-    dy = y1 - y0
-    D = 2*dy - dx
-    y = y0
+D = (2 * dy) - dx
+if D > 0
+    y = y + yi
+    D = D + (2 * (dy - dx))
+else
+	D = D + 2*dy
 
-    for x from x0 to x1
-        plot(x,y)
-        if D > 0
-            y = y + 1
-            D = D - 2*dx
-        end if
-        D = D + 2*dy
 */
+// void	plot_line_low(t_iso a, t_iso b, void *mlx_id, void *win_id)
+// {
+// 	int x;
+// 	int y;
+// 	int dx;
+// 	int dy;
+// 	int d;
+
+// 	dx = b.x - a.x;
+// 	dy = b.y - a.y;
+// 	d = 2 * dy - dx;
+// }

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 06:51:27 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/13 10:55:13 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/14 17:57:13 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,19 @@
 # define B_OFF 0.8
 # define S_OFF 0.2
 
+typedef struct t_cart
+{
+	double	x;
+	double	y;
+	double	z;
+}			t_cart;
 typedef struct s_point
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }		t_point;
+
+typedef t_point	t_iso;
 
 typedef struct s_sqr
 {
@@ -60,6 +68,8 @@ void	print_map(char **map);
 double	get_slope(double x0, double y0, double x1, double y1);
 double	get_const(double m, double x, double y);
 double	foo(double x, double y, double m, double b);
-void	plot_line(double x0, double y0, double x1, double y1, void *mlx_id, void *win_id);
+t_iso	to_isometric(t_cart cart);
+void	swap(double *a, double *b);
+void	plot_line(t_iso a, t_iso b, void *mlx_id, void *win_id);
 
 #endif
