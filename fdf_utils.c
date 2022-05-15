@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 11:56:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/14 19:03:56 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/15 14:40:20 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,19 @@ void	swap(double *a, double *b)
 	*b = c;
 }
 
+double	slope(t_iso a, t_iso b)
+{
+	return ((b.y - a.y) / (b.x - a.x));
+}
 
+void	check_neg(double *x0, double *y0, double *x1, double *y1)
+{
+	if (*x0 > *x1 && *y0 > *y1)
+	{
+		swap(x0, x1);
+		swap(y0, y1);
+	}
+}
 
 t_iso	to_isometric(t_cart cart)
 {
@@ -31,9 +43,6 @@ t_iso	to_isometric(t_cart cart)
 	iso.y = ((cart.x + cart.y) / 2) - cart.z;
 	return (iso);
 }
-
-
-
 
 int	*get_map_dim(char **map)
 {
