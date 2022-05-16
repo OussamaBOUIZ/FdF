@@ -6,46 +6,45 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 18:32:52 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/15 18:33:12 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:13:40 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-
-void	draw_h_lines(void *m_id, void *w_id, t_point start, t_point end)
+void	draw_h_line(void *m_id, void *w_id, t_iso start, t_iso end)
 {
-	int	x;
-	int	y;
-	int inc;
+	while (++start.x <= end.x)
+		mlx_pixel_put(m_id, w_id, start.x, start.y, COLOR);
+}
+
+void	draw_h_lines(void *m_id, void *w_id, t_iso start, t_iso end)
+{
+	int	inc;
 
 	inc = W_H * 0.05;
-	x = start.x;
-	y = start.y;
-	while (y <= end.y)
+	while (start.y <= end.y)
 	{
-		x = start.x;
-		while (++x <= end.x)
-			mlx_pixel_put(m_id, w_id, x, y, COLOR);
-		y += inc;
+		draw_h_line(m_id, w_id, start, end);
+		start.y += inc;
 	}
 }
 
-void	draw_v_lines(void *m_id, void *w_id, t_point start, t_point end)
+void	draw_v_line(void *m_id, void *w_id, t_iso start, t_iso end)
 {
-	int	x;
-	int	y;
+	while (++start.y <= end.y)
+		mlx_pixel_put(m_id, w_id, start.x, start.y, COLOR);
+}
+
+void	draw_v_lines(void *m_id, void *w_id, t_iso start, t_iso end)
+{
 	int	inc;
 
 	inc = W_W * 0.05;
-	x = start.x;
-	y = start.y;
-	while (x <= end.x)
+	while (start.x <= end.x)
 	{
-		y = start.y;
-		while (++y <= end.y)
-			mlx_pixel_put(m_id, w_id, x, y, COLOR);
-		x += inc;
+		draw_v_line(m_id, w_id, start, end);
+		start.x += inc;
 	}
 }
 

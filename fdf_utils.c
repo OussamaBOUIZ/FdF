@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 11:56:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/15 14:40:20 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:06:45 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,12 @@ int	*get_map_dim(char **map)
 {
 	int	h;
 	int	w;
-	int	dim[2];
+	int	*dim;
 
 	check_map(map);
+	dim = malloc(sizeof(int) * 2);
+	if (!dim)
+		return (0);
 	h = 0;
 	w = 0;
 	while (map[h])
