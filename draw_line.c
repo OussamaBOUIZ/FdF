@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 12:39:29 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/16 11:53:10 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/18 15:49:06 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 /*
 	NEED TO HANDLE LINES THAT ARE PAARALLEL TO X OR Y AXIS
 */
+
+void	put_pixel(void *m, void *w, int x, int y)
+{
+	mlx_pixel_put(m, w, x + W_W / 2, y + W_H / 2, COLOR);
+}
 
 void	draw_low_line(t_iso a, t_iso b, void *m_id, void *w_id)
 {
@@ -40,7 +45,7 @@ void	draw_low_line(t_iso a, t_iso b, void *m_id, void *w_id)
 	}
 	while (a.x <= b.x)
 	{
-		mlx_pixel_put(m_id, w_id, a.x, a.y, COLOR);
+		put_pixel(m_id, w_id, a.x, a.y);
 		if (d > 0)
 		{
 			a.y += yi;
@@ -70,7 +75,7 @@ void	draw_high_line(t_iso a, t_iso b, void *m_id, void *w_id)
 	}
 	while (a.y <= b.y)
 	{
-		mlx_pixel_put(m_id, w_id, a.x, a.y, COLOR);
+		put_pixel(m_id, w_id, a.x, a.y);
 		if (d > 0)
 		{
 			a.x += xi;
@@ -88,8 +93,8 @@ void	draw_line(t_iso a, t_iso b, void *m_id, void *w_id)
 
 	check_neg(&(a.x), &(a.y), &(b.x), &(b.y));
 	m = slope(a, b);
-	if (abs(m) > 1)
+	if (fabs(m) > 1)
 		draw_low_line(a, b, m_id, w_id);
 	else
-		draw_hight_line(a, b, m_id, w_id);
+		draw_high_line(a, b, m_id, w_id);
 }

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 06:51:27 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/18 13:26:36 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/18 18:02:17 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
-# define W_H 1200
-# define W_W 1200 
+# define W_H 100
+# define W_W 100 
 # define B_S 1
 # define COLOR 16073446
 # define B_OFF 0.8
@@ -56,6 +56,8 @@ typedef struct s_peri
 	int	e_y;
 }				t_peri;
 
+typedef double	t_d;
+
 int		ft_atoi(const char *str);
 void	manage_error(int ac, char **av);
 int		check_map(char **map);
@@ -89,4 +91,6 @@ t_iso	**iso_square(int row, int col);
 t_iso	**cords_atoi(char ***cords, int row, int col);
 void	print_iso_table(t_iso **iso, int col);
 void	draw_line(t_iso a, t_iso b, void *m_id, void *w_id);
+void	display_map(t_iso **iso_tb, int *row_col, void *m_id, void *w_id);
+
 #endif
