@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_map.c                                      :+:      :+:    :+:   */
+/*   print_tri.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/16 11:34:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/16 11:37:17 by obouizga         ###   ########.fr       */
+/*   Created: 2022/05/17 15:30:45 by obouizga          #+#    #+#             */
+/*   Updated: 2022/05/18 07:41:03 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	display_map(char **map, void *m_id, void *w_id)
+void	print_tri(char ***cords)
 {
-	int	dim[2];
+	int	i;
+	int	j;
 
-	dim = get_map_dim(map);
-	
+	i = 0;
+	while (cords[i])
+	{
+		j = 0;
+		while (cords[i][j])
+		{
+			ft_putstr(cords[i][j]);
+			ft_putchar(' ');
+			j++;
+		}
+		ft_putchar('\n');
+		i++;
+	}
 }
