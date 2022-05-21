@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 07:54:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/18 15:39:57 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/21 11:34:44 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,24 @@ t_iso	**iso_square(int row, int col)
 	return (iso_tab);
 }
 
-t_iso	**cords_atoi(char ***cor, int row, int col)
+t_iso	**cords_atoi(char ***cor, int *dim)
 {
 	t_iso	**iso;
 	int		i;
 	int		j;
+	int		u;
 
-	// printf("---CARTESIAN----\n");
-	iso = iso_square(row, col);
+	iso = iso_square(dim[0], dim[1]);
 	j = 0;
+	u = 3;
 	while (cor[j])
 	{
 		i = 0;
 		while (cor[j][i])
 		{
-			iso[j][i] = to_isometric((t_d)i * 20, (t_d)j * 20, ft_atoi(cor[j][i]) * 20);
-			// iso[j][i] = to_isometric((t_d)i, (t_d)j, ft_atoi(cor[j][i]));
-			// printf("iso[j][i] : %.0f ", iso[j][i].x);
-			// printf("( %i, %i, %i) ", i, j, ft_atoi(cor[j][i]));
+			iso[j][i] = to_isom((t_d)i * u, (t_d)j * u, ft_atoi(cor[j][i]) * u);
 			i++;
 		}
-		// printf("\n");
 		j++;
 	}
 	return (iso);
@@ -59,7 +56,7 @@ void	print_iso_table(t_iso **iso, int col)
 	int	i;
 
 	j = 0;
-	printf("---ISOMETRIC----\n");
+	printf("---ISOMETRIC----\n"); 
 	while (iso[j])
 	{
 		i = -1;

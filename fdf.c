@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 06:51:57 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/18 18:02:57 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/21 11:13:34 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,46 @@ int	deal_key(int key, void *param)
 
 */
 
+
+
+/*
+	
+	MAIN:
+		HANDLING ERROR and GET MAP:
+			check arguments.
+			read map.
+			check map.
+			return (map)
+		INQUIRE MAP:
+			return (col_n & row_n).
+		DISPLAY:
+			get cordinates.
+			convert cordinates from cartesian to isometric
+		HANDLING EVENTS:
+			handle ESC
+			handle Red Cross
+
+*/
+
+int	main(int ac, char **av)
+{
+	char	**map;
+	int		*dim;
+	void	**mlx;
+
+	map = check_get_map(ac, av);
+	mlx = malloc(sizeof(void *) * 2);
+	if (!mlx)
+		return (1);
+	mlx[0] = mlx_init();
+	mlx[1] = mlx_new_window(mlx[0], W_W, W_H, "FDF");  
+	dim = map_dim(map);	
+	display(mlx, dim, map);
+	mlx_loop(mlx[0]);
+	return (0);
+}
+
+/*
 int	main(int ac, char **av)
 {
 	void	*mlx_id;
@@ -80,9 +120,9 @@ int	main(int ac, char **av)
 	cords = get_cords(map, row_col[0]);
 	row_col[1] = ptr_str_len(cords[0]);
 	iso = cords_atoi(cords, row_col[0], row_col[1]);
-	win_id = mlx_new_window(mlx_id, W_W * row_col[0], W_H * row_col[1], "FDF");
-	print_iso_table(iso, row_col[1]);
-	display_map(iso, row_col, mlx_id, win_id);
+	win_id = mlx_new_window(mlx_id, W_W, W_H, "FDF");  
+	display_map(iso, row_col, mlx_id, win_id);       
 	mlx_loop(mlx_id);
 	return (0);
 }
+*/

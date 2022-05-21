@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_map.c                                      :+:      :+:    :+:   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 15:07:23 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/18 15:17:32 by obouizga         ###   ########.fr       */
+/*   Created: 2022/05/20 15:41:03 by obouizga          #+#    #+#             */
+/*   Updated: 2022/05/20 15:43:59 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	display_map(t_iso **iso_tb, int *row_col, void *m_id, void *w_id)
+void	free_both(char **s1, char **s2)
 {
-	int	j;
-	int	i;
+	free_double_p(s1);
+	free_double_p(s2);
+}
 
-	j = 0;
-	while (j < row_col[0] - 1)
-	{
-		i = -1;
-		while (++i < row_col[1] - 1)
-		{
-			draw_line(iso_tb[j][i], iso_tb[j][i + 1], m_id, w_id);
-			draw_line(iso_tb[j][i], iso_tb[j + 1][i], m_id, w_id);
-		}
-		j++;
-	}
+void	free_double_p(char **strings)
+{
+	char	**k;
+
+	k = strings;
+	while (*strings)
+		free(*(strings++));
+	free(k);
 }

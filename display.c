@@ -1,13 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_error.c                                     :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 08:08:30 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/20 16:14:51 by obouizga         ###   ########.fr       */
+/*   Created: 2022/05/20 16:30:20 by obouizga          #+#    #+#             */
+/*   Updated: 2022/05/20 16:44:10 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	display(void **mlx, int *dim, char **map)
+{
+	char	***cord;
+	t_iso	**iso;
+
+	cord = get_cords(map, dim[0]);
+	iso = cords_atoi(cord, dim);
+	drawing(iso, dim, mlx[0], mlx[1]);
+}

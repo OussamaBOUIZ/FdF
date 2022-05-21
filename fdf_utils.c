@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 11:56:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/18 13:05:21 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/21 11:25:59 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,12 @@ void	check_neg(double *x0, double *y0, double *x1, double *y1)
 	}
 }
 
-// t_iso	to_isometric(t_cart cart)
-// {
-// 	t_iso	iso;
-
-// 	iso.x = cart.x - cart.y;
-// 	iso.y = ((cart.x + cart.y) / 2) - cart.z;
-// 	return (iso);
-// }
-
-t_iso	to_isometric(double x, double y, double z)
+t_iso	to_isom(double x, double y, double z)
 {
 	t_iso	iso;
 
 	iso.x = x - y;
-	iso.y = ((x + y) / 2) - z;
+	iso.y = (x + y) / 2 - z;   
 	return (iso);
 }
 
