@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 07:54:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/21 11:34:44 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:53:53 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_iso	**cords_atoi(char ***cor, int *dim)
 
 	iso = iso_square(dim[0], dim[1]);
 	j = 0;
-	u = 3;
+	u = 40;
 	while (cor[j])
 	{
 		i = 0;
@@ -56,7 +56,7 @@ void	print_iso_table(t_iso **iso, int col)
 	int	i;
 
 	j = 0;
-	printf("---ISOMETRIC----\n"); 
+	printf("---ISOMETRIC----\n");
 	while (iso[j])
 	{
 		i = -1;

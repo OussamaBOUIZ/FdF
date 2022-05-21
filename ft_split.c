@@ -6,12 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 09:27:47 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/09 09:27:54 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:55:33 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
 
 static size_t	get_words_n(char *s, char c)
 {

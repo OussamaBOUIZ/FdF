@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 06:51:27 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/21 11:21:57 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/21 17:10:52 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ double	get_const(double m, double x, double y);
 t_iso	to_isom(double x, double y, double z);
 double	slope(t_iso a, t_iso b);
 void	swap(double *a, double *b);
-void	plot_line(t_d x0, t_d y0, t_d x1, t_d y1, void *m, void *w);
+// void	plot_line(t_d x0, t_d y0, t_d x1, t_d y1, void *m, void *w);
+void	plot_line(t_iso a, t_iso b, void **mlx);
 void	draw_grid(void *m_id, void *w_id);
 int		*get_map_dim(char **map);
 char	***get_cords(char **map, int row);
@@ -92,13 +93,13 @@ t_iso	**iso_square(int row, int col);
 t_iso	**cords_atoi(char ***cords, int *dim);
 void	print_iso_table(t_iso **iso, int col);
 void	draw_line(t_iso a, t_iso b, void *m_id, void *w_id);
-void	drawing(t_iso **iso_tb, int *row_col, void *m_id, void *w_id);
+void	drawing(t_iso **iso_tb, int *row_col, void **mlx);
 void	sharp_line(void *m, void *w);
-void	put_pixel(void *m, void *w, int x, int y);
+void	put_pixel(void **mlx, int x, int y);
 void	free_double_p(char **strings);
 void	free_both(char **s1, char **s2);
 int		*map_dim(char **map);
 void	display(void **mlx, int *dim, char **map);
-char 	**check_get_map(int ac, char **av);
+char	**check_get_map(int ac, char **av);
 
 #endif

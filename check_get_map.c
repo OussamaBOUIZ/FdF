@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map.c                                          :+:      :+:    :+:   */
+/*   check_get_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:14:15 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/20 16:20:43 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:51:07 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ int	check_map(char **map)
 	return (0);
 }
 
-char **check_get_map(int ac, char **av)
+char	**check_get_map(int ac, char **av)
 {
-	char **map;
-	
+	char	**map;
+
 	manage_error(ac, av);
 	map = read_map(av[1]);
 	if (check_map(map))

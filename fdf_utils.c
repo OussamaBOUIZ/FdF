@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 11:56:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/21 11:25:59 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:55:03 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_iso	to_isom(double x, double y, double z)
 	t_iso	iso;
 
 	iso.x = x - y;
-	iso.y = (x + y) / 2 - z;   
+	iso.y = (x + y) * 3 / 4 - z;
 	return (iso);
 }
 

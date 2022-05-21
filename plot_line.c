@@ -6,92 +6,99 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 16:29:42 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/21 11:28:56 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/21 17:13:11 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-
-void	put_pixel(void *m, void *w, int x, int y)
+void	put_pixel(void **mlx, int x, int y)
 {
-	mlx_pixel_put(m, w, x + W_W / 2, y + W_H / 3, 528127); 
+	mlx_pixel_put(mlx[0], mlx[1], x + W_W / 2, y + W_H / 3, COLOR);
 }
 
-void	plot_line_low(t_d x0, t_d y0, t_d x1, t_d y1, void *m, void *w)
+int	*line_change(t_iso a, t_iso b)
 {
-	int	dx;
-	int	dy;
+	int	*big_d;
+
+	big_d = malloc(sizeof(int) * 2);
+	if (!big_d)
+		return (0);
+	big_d[0] = b.x - a.x;
+	big_d[1] = b.y - a.y;
+	return (big_d);
+}
+
+void	plot_line_low(t_iso a, t_iso b, void **mlx)
+{
+	int	*dv;
 	int	yi;
 	int	d;
 
-	dx = x1 - x0;
-	dy = y1 - y0;
+	dv = line_change(a, b);
 	yi = 1;
-	if (dy < 0)
+	if (dv[1] < 0)
 	{
 		yi = -1;
-		dy = -dy;
+		dv[1] = -dv[1];
 	}
-	d = 2 * dy - dx;
-	while (x0 < x1)
+	d = 2 * dv[1] - dv[0];
+	while (a.x < b.x)
 	{
-		put_pixel(m, w, x0, y0);
+		put_pixel(mlx, a.x, a.y);
 		if (d > 0)
 		{
-			y0 += yi;
-			d = d + 2 * (dy - dx);
+			a.y += yi;
+			d = d + 2 * (dv[1] - dv[0]);
 		}
 		else
-			d = d + 2 * dy;
-		x0++;
+			d = d + 2 * dv[1];
+		a.x++;
 	}
 }
 
-void	plot_line_high(t_d x0, t_d y0, t_d x1, t_d y1, void *m, void *w)
+void	plot_line_high(t_iso a, t_iso b, void **mlx)
 {
-	int	dx;
-	int	dy;
+	int	*dv;
 	int	xi;
 	int	d;
-	
-	dx = x1 - x0;
-	dy = y1 - y0;
+
+	dv = line_change(a, b);
 	xi = 1;
-	if (dx < 0)
+	if (dv[0] < 0)
 	{
 		xi = -1;
-		dx = -dx;
+		dv[0] = -dv[0];
 	}
-	d = 2 * dx - dy;
-	while (y0 < y1)
+	d = 2 * dv[0] - dv[1];
+	while (a.y < b.y)
 	{
-		put_pixel(m, w, x0, y0);
+		put_pixel(mlx, a.x, a.y);
 		if (d > 0)
 		{
-			x0 += xi;
-			d = d + 2 * (dx - dy);
+			a.x += xi;
+			d = d + 2 * (dv[0] - dv[1]);
 		}
 		else
-			d = d + 2 * dx;
-		y0++;
+			d = d + 2 * dv[0];
+		a.y++;
 	}
 }
 
-void	plot_line(t_d x0, t_d y0, t_d x1, t_d y1, void *m, void *w)
+void	plot_line(t_iso a, t_iso b, void **mlx)
 {
-	if (fabs(y1 - y0) < fabs(x1 - x0))
+	if (fabs(b.y - a.y) < fabs(b.x - a.x))
 	{
-		if (x0 > x1)
-			plot_line_low(x1, y1, x0, y0, m, w);
+		if (a.x > b.x)
+			plot_line_low(b, a, mlx);
 		else
-			plot_line_low(x0, y0, x1, y1, m, w);
+			plot_line_low(a, b, mlx);
 	}
 	else
 	{
-		if (y0 > y1)
-			plot_line_high(x1, y1, x0, y0, m, w);
+		if (a.y > b.y)
+			plot_line_high(b, a, mlx);
 		else
-			plot_line_high(x0, y0, x1, y1, m, w);
+			plot_line_high(a, b, mlx);
 	}
 }
