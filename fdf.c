@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 06:51:57 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/21 17:14:53 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/22 18:55:44 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@
 			handle ESC
 			handle Red Cross
 
-*/
 
 int	main(int ac, char **av)
 {
@@ -55,5 +54,26 @@ int	main(int ac, char **av)
 	dim = map_dim(map);
 	display(mlx, dim, map);
 	mlx_loop(mlx[0]);
+	return (0);
+}
+*/
+
+int	main(int ac, char **av)
+{
+	t_data	img;
+	int		*dim;
+	void	*m_id;
+	void	*w_id;
+	char	**map;
+
+	map = check_get_map(ac, av);
+	m_id = mlx_init();
+	w_id = mlx_new_window(m_id, W_W, W_H, "FDF");
+	img.img = mlx_new_image(m_id, W_W, W_H);
+	img.ad = mlx_get_data_addr(img.img, &img.bpp, &img.l_l, &img.endian);
+	dim = map_dim(map);
+	display(&img, dim, map);
+	mlx_put_image_to_window(m_id, w_id, img.img, 200, 0);
+	mlx_loop(m_id);
 	return (0);
 }

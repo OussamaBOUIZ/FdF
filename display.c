@@ -6,18 +6,32 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:30:20 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/21 16:54:04 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/22 15:18:26 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	display(void **mlx, int *dim, char **map)
+//ORIGINAL
+// void	display(void **mlx, int *dim, char **map)
+// {
+// 	char	***cord;
+// 	t_iso	**iso;
+
+// 	cord = get_cords(map, dim[0]);
+// 	iso = cords_atoi(cord, dim);
+// 	drawing(iso, dim, mlx);
+// }
+
+
+//TESTING
+void	display(t_data *img, int *dim, char **map)
 {
 	char	***cord;
 	t_iso	**iso;
 
+	(void)img;
 	cord = get_cords(map, dim[0]);
 	iso = cords_atoi(cord, dim);
-	drawing(iso, dim, mlx);
+	drawing(iso, dim, img);
 }

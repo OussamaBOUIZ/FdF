@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:33:17 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/21 16:52:31 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/22 10:17:06 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int	*map_dim(char **map)
 		c++;
 	dim[0] = r;
 	dim[1] = c;
+	printf("Map size: H -> %i, W -> %i\n", dim[0], dim[1]);
 	return (dim);
 }
