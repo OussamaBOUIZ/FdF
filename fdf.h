@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 06:51:27 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/22 18:28:16 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/23 19:30:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
-# define W_H 1080
-# define W_W 1920 
+# define W_H 768 
+# define W_W 1366
 # define B_S 1
 # define COLOR 0xeb3461  
 # define B_OFF 0.8
@@ -114,5 +114,6 @@ int		*map_dim(char **map);
 void	display(t_data *img, int *dim, char **map);
 char	**check_get_map(int ac, char **av);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		find_max_z(char **map, int row);
 
 #endif

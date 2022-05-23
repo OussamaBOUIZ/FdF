@@ -6,20 +6,18 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 16:29:42 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/22 18:33:55 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/23 19:27:09 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// void	put_pixel(void **mlx, int x, int y)
-// {
-// 	mlx_pixel_put(mlx[0], mlx[1], x + W_W / 2, y + W_H / 3, COLOR);
-// }
-
 void	put_pixel(t_data *data, int x, int y)
 {
-	my_mlx_pixel_put(data, x, y, COLOR);
+	if (x < W_W && y < W_H)
+	{
+		my_mlx_pixel_put(data, x + W_W * 2 / 5, y + W_H / 3, COLOR);
+	}
 }
 
 int	*line_change(t_iso a, t_iso b)
@@ -149,7 +147,6 @@ void	plot_line_high(t_iso a, t_iso b, t_data *img)
 		a.y++;
 	}
 }
-
 
 //ORIGINAL
 // void	plot_line(t_iso a, t_iso b, void **mlx)

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 07:54:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/22 18:53:55 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/23 19:10:54 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ t_iso	**cords_atoi(char ***cor, int *dim)
 	t_iso	**iso;
 	int		i;
 	int		j;
-	int		u;
+	t_d		u;
 
 	iso = iso_square(dim[0], dim[1]);
 	j = 0;
-	u = 50;
+	u = 24;
 	while (cor[j])
 	{
 		i = 0;
@@ -50,6 +50,7 @@ t_iso	**cords_atoi(char ***cor, int *dim)
 	return (iso);
 }
 
+/*
 void	print_iso_table(t_iso **iso, int col)
 {
 	int	j;
@@ -66,3 +67,4 @@ void	print_iso_table(t_iso **iso, int col)
 		j++;
 	}
 }
+*/

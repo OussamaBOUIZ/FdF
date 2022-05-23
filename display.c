@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:30:20 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/22 15:18:26 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/23 18:34:27 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 // 	iso = cords_atoi(cord, dim);
 // 	drawing(iso, dim, mlx);
 // }
-
 
 //TESTING
 void	display(t_data *img, int *dim, char **map)

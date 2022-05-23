@@ -6,12 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:07:23 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/22 15:19:18 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/23 19:26:04 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
 
 //ORIGINAL
 // void	drawing(t_iso **iso_tb, int *row_col, void **mlx)
@@ -33,8 +32,6 @@
 // 		j++;
 // 	}
 // }
-
-
 //TESTING
 
 void	drawing(t_iso **iso_tb, int *row_col, t_data *img)
