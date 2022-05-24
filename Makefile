@@ -9,7 +9,7 @@ CC = cc
 FUNCTIONS =  ft_puts.c gnl.c utils.c read_map.c print_map.c ft_split.c fdf.c \
 			ft_atoi.c fdf_utils.c  draw_grid.c get_cords.c print_tri.c\
 			map_dim.c cords_atoi.c plot_line.c free_utils.c check_get_map.c display.c\
-			drawing.c my_mlx_pixel_put.c find_max_z.c
+			drawing.c my_mlx_pixel_put.c find_max_z.c def_unit.c
 
 OBJECTS =  $(FUNCTIONS:.c=.o)
 

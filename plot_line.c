@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 16:29:42 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/23 19:27:09 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:40:32 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	put_pixel(t_data *data, int x, int y)
 {
 	if (x < W_W && y < W_H)
 	{
-		my_mlx_pixel_put(data, x + W_W * 2 / 5, y + W_H / 3, COLOR);
+		my_mlx_pixel_put(data, x + W_W * 2 / 5, y + W_H / 4, COLOR);
 	}
 }
 

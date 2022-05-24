@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 11:56:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/23 18:57:22 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/24 19:19:17 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,24 @@ double	slope(t_iso a, t_iso b)
 	return ((b.y - a.y) / (b.x - a.x));
 }
 
-void	check_neg(double *x0, double *y0, double *x1, double *y1)
+// void	check_neg(double *x0, double *y0, double *x1, double *y1)
+// {
+// 	if (*x0 > *x1 && *y0 > *y1)
+// 	{
+// 		swap(x0, x1);
+// 		swap(y0, y1);
+// 	}
+// }
+
+t_d	max(t_d a, t_d b)
 {
-	if (*x0 > *x1 && *y0 > *y1)
-	{
-		swap(x0, x1);
-		swap(y0, y1);
-	}
+	t_d	max;
+
+	if (a > b)
+		max = a;
+	else
+		max = b;
+	return (b);
 }
 
 t_iso	to_isom(double x, double y, double z)
