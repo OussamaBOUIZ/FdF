@@ -6,3 +6,4 @@ iso.c
 main.c
 *.fdf
 iso
+*.o

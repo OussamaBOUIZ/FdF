@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 06:51:27 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/24 19:20:49 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/29 11:40:31 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,34 @@
 # include <stdio.h>
 # include <math.h>
 //2880x1620
-# define W_H 1620 
-# define W_W 2500
+# define W_H  1080
+# define W_W 1920
 # define B_S 1
 # define COLOR 0xeb3461  
 # define B_OFF 0.8
 # define S_OFF 0.2
 # define U 50
+
+typedef double	t_d;
+
+typedef struct s_mlx
+{
+	void	*m_id;
+	void	*w_id;
+	int		*dim;
+}			t_mlx;
+
+typedef struct s_u
+{
+	t_d	x;
+	t_d	y;
+}			t_u;
+
+typedef struct	s_cp
+{
+	int	x_off;
+	int	y_off;
+}			t_cp;
 typedef struct s_data
 {
 	void	*img;
@@ -60,13 +81,23 @@ typedef struct s_sqr
 
 typedef struct s_peri
 {
-	int	s_x;
-	int	s_y;
-	int	e_x;
-	int	e_y;
+	t_d	max_x;
+	t_d	max_y;
+	t_d	min_x;
+	t_d	min_y;
 }				t_peri;
 
-typedef double	t_d;
+typedef struct s_sh
+{
+	t_iso	**iso;
+	t_peri	peri;
+}	t_sh;
+
+typedef struct s_off
+{
+	int	x_off;
+	int	y_off;
+}	t_off;
 
 int		ft_atoi(const char *str);
 void	manage_error(int ac, char **av);
@@ -88,25 +119,26 @@ char	**read_map(char *file);
 void	print_map(char **map);
 double	get_slope(double x0, double y0, double x1, double y1);
 double	get_const(double m, double x, double y);
-t_iso	to_isom(double x, double y, double z);
+t_iso	to_isom(double x, double y, double z, t_u units);
 double	slope(t_iso a, t_iso b);
 void	swap(double *a, double *b);
-// void	plot_line(t_iso a, t_iso b, void **mlx);
-void	plot_line(t_iso a, t_iso b, t_data *img);
+// void	plot_line(t_iso a, t_iso b, t_data *img, t_cp offset);
+void	plot_line(t_iso a, t_iso b, t_data *img, t_off offset);
 void	draw_grid(void *m_id, void *w_id);
 int		*get_map_dim(char **map);
 char	***get_cords(char **map, int row);
 void	print_tri(char ***s);
 int		ptr_str_len(char **s);
 t_iso	**iso_square(int row, int col);
-t_iso	**cords_atoi(char ***cords, int *dim);
+// t_iso	**cords_atoi(char ***cords, int *dim, char **map);
+t_sh	cords_atoi(char ***cords, int *dim, char **map);
 void	print_iso_table(t_iso **iso, int col);
 void	draw_line(t_iso a, t_iso b, void *m_id, void *w_id);
-// void	drawing(t_iso **iso_tb, int *row_col, void **mlx);
-void	drawing(t_iso **iso_tb, int *row_col, t_data *img);
+// void	drawing(t_iso **iso_tb, int *row_col, t_data *img, t_cp offset);
+void	drawing(t_sh sh, int *row_col, t_data *img);
 void	sharp_line(void *m, void *w);
-// void	put_pixel(void **mlx, int x, int y);
-void	put_pixel(t_data *data, int x, int y);
+// void	put_pixel(t_data *data, int x, int y, t_cp offset);
+void	put_pixel(t_data *data, int x, int y, t_off offset);
 void	free_double_p(char **strings);
 void	free_both(char **s1, char **s2);
 int		*map_dim(char **map);
@@ -114,8 +146,11 @@ int		*map_dim(char **map);
 void	display(t_data *img, int *dim, char **map);
 char	**check_get_map(int ac, char **av);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		find_max_z(char **map, int row);
-t_d		def_unit(int *dim, char **map);
-t_d	max(t_d a, t_d b);
+int		find_max_z(char **map, int row, char ***cor);
+t_u		def_unit(int *dim, char **map, char ***cor);
+t_cp	get_offset(int *dim, char **map, char ***cord);
+t_d		max(t_d a, t_d b);
+void	free_tri_p(char ***ptr);
+void	free_double_iso(t_iso **iso);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:14:15 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/24 12:20:08 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/27 19:36:42 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ void	manage_error(int ac, char **av)
 	(void)av;
 	if (ac != 2)
 		exit(EXIT_FAILURE);
-	if (-1 == open(av[1], O_RDONLY))
+	if (-1 == open(av[1], O_RDWR))
+	{
+		ft_putstr("INVALID PATH ❌\n");
 		exit(EXIT_FAILURE);
+	}
 }
 
 int	d_str_len(char **s)
@@ -62,6 +65,9 @@ char	**check_get_map(int ac, char **av)
 	manage_error(ac, av);
 	map = read_map(av[1]);
 	if (check_map(map))
+	{
+		free_double_p(map);
 		exit(EXIT_FAILURE);
+	}
 	return (map);
 }
