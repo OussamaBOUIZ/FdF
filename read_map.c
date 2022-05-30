@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 09:13:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/12 08:19:01 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:29:38 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ char	**read_map(char *file)
 
 	fd = open(file, O_RDONLY);
 	map_s = get_next_line(fd);
+	if (!map_s)
+	{
+		ft_putstr("🚨 EMPTY FILE\n");
+		exit(EXIT_FAILURE);
+	}
 	next_l = get_next_line(fd);
 	while (next_l)
 	{

@@ -6,12 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 18:31:03 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/30 10:30:08 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:37:22 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
 
 int	find_min_z(int row, char ***cor)
 {
@@ -34,7 +33,6 @@ int	find_min_z(int row, char ***cor)
 	}
 	return (min);
 }
-
 
 int	find_max_z(int row, char ***cor)
 {

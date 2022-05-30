@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 07:54:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/30 15:02:15 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:36:27 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,52 +69,3 @@ t_sh	cords_atoi(char ***cor, int *dim, char **map)
 	}
 	return (sh);
 }
-
-//ORIGINAL
-/*
-t_sh	cords_atoi(char ***cor, int *dim, char **map)
-{
-	t_sh	sh;
-	int		i;
-	int		j;
-	t_u		units;
-
-	j = 0;
-	i = 0;
-	sh.iso = iso_square(dim[0], dim[1]);
-	sh.peri.max_x = sh.iso[j][i].x;
-	sh.peri.min_x = sh.iso[j][i].x;
-	sh.peri.max_y = sh.iso[j][i].y;
-	sh.peri.min_y = sh.iso[j][i].y;
-	units = def_unit(dim, map, cor);
-	while (cor[j])
-	{
-		i = 0;
-		while (cor[j][i])
-		{
-			sh.iso[j][i] = to_isom((t_d)i, (t_d)j, ft_atoi(cor[j][i]), units);
-			sh.peri = get_perimeter(sh.peri, sh.iso[j][i].x, sh.iso[j][i].y);
-			i++;
-		}
-		j++;
-	}
-	return (sh);
-}
-
-void	print_iso_table(t_iso **iso, int col)
-{
-	int	j;
-	int	i;
-
-	j = 0;
-	printf("---ISOMETRIC----\n");
-	while (iso[j])
-	{
-		i = -1;
-		while (++i < col)
-			printf("( %.1f, %.1f ) ", iso[j][i].x, iso[j][i].y);
-		printf("\n");
-		j++;
-	}
-}
-*/

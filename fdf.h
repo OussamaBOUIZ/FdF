@@ -131,12 +131,9 @@ char	**ft_split(char const *s, char c);
 int		count_lines(int fd);
 char	**read_map(char *file);
 void	print_map(char **map);
-double	get_slope(double x0, double y0, double x1, double y1);
 double	get_const(double m, double x, double y);
 // t_iso	to_isom(double x, double y, double z, t_u units);
 t_iso	to_isom(double x, double y, t_atoi zee, t_u units);
-double	slope(t_iso a, t_iso b);
-void	swap(double *a, double *b);
 // void	plot_line(t_iso a, t_iso b, t_data *img, t_cp offset);
 void	plot_line(t_iso a, t_iso b, t_data *img, t_off offset);
 void	draw_grid(void *m_id, void *w_id);
@@ -166,8 +163,9 @@ int		find_max_z(int row, char ***cor);
 int		find_ext_z(int row, char ***cor);
 t_u		def_unit(int *dim, char **map, char ***cor);
 t_cp	get_offset(int *dim, char **map, char ***cord);
-t_d		max(t_d a, t_d b);
 void	free_tri_p(char ***ptr);
 void	free_double_iso(t_iso **iso);
+int		deal_key(int key, void *param);
+int		close_window(void);
 
 #endif
