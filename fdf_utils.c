@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 11:56:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/30 14:33:48 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/30 14:56:46 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,19 @@ t_d	max(t_d a, t_d b)
 	return (b);
 }
 
+t_iso	to_isom(double x, double y, t_atoi zee, t_u units)
+{
+	t_iso	iso;
+
+	iso.x = (x - y);
+	iso.y = ((x + y) * 3 / 4 - zee.val);
+	iso.x = iso.x * units.x;
+	iso.y = iso.y * units.y;
+	iso.clr = zee.clr;
+	return (iso);
+}
+
+/*
 t_iso	to_isom(double x, double y, double z, t_u units)
 {
 	t_iso	iso;
@@ -47,3 +60,4 @@ t_iso	to_isom(double x, double y, double z, t_u units)
 	iso.y = iso.y * units.y;
 	return (iso);
 }
+*/

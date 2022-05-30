@@ -1,24 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   hex_to_int.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 16:30:20 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/30 18:02:28 by obouizga         ###   ########.fr       */
+/*   Created: 2022/05/30 18:06:46 by obouizga          #+#    #+#             */
+/*   Updated: 2022/05/30 18:29:08 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	display(t_data *img, int *dim, char **map)
+int	hex_to_int(char *s)
 {
-	char	***cord;
-	t_sh	shape;
+	int	i;
+	int	j;
+	int	decim;
+	int	b;
+	int	l;
 
-	cord = get_cords(map, dim[0]);
-	shape = cords_atoi(cord, dim, map);
-	drawing(shape, dim, img);
-	free_tri_p(cord);
+	decim = 0;
+	j = 0;
+	l = -1;
+	i = ft_strlen(s) - 1;
+	if (s[0] == '0' && s[1] == 'x')
+		l = 1;
+	while (i > l)
+	{
+		if (s[i] >= '0' && s[i] <= '9')
+			b = s[i] - '0';
+		else if (s[i] >= 'a' && s[i] <= 'f')
+			b = s[i] - 'a' + 10;
+		else if (s[i] >= 'A' && s[i] <= 'F')
+			b = s[i] - 'A' + 10;
+		decim = decim + b * pow(16, j);
+		j++;
+		i--;
+	}
+	return (decim);
 }

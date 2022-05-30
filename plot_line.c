@@ -6,23 +6,15 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 16:29:42 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/30 10:47:16 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:29:52 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// void	put_pixel(t_data *data, int x, int y, t_cp o)
-// {
-// 	(void)o;
-// 	if (x < W_W && y < W_H)
-// 		my_mlx_pixel_put(data, x + 780, y + 250, COLOR);
-// 	// printf(" ( x : %d, y : %d)\n", x, y);
-// }
-
-void	put_pixel(t_data *data, int x, int y, t_off o)
+void	put_pixel(t_data *data, int x, int y, int color)
 {
-	my_mlx_pixel_put(data, x + o.x_off, y + o.y_off, COLOR);
+	my_mlx_pixel_put(data, x, y, color);
 }
 
 int	*line_change(t_iso a, t_iso b)
@@ -37,36 +29,8 @@ int	*line_change(t_iso a, t_iso b)
 	return (big_d);
 }
 
+//ORIGINAL
 /*
-void	plot_line_low(t_iso a, t_iso b, t_data *img, t_cp offset)
-{
-	int	*dv;
-	int	yi;
-	int	d;
-
-	dv = line_change(a, b);
-	yi = 1;
-	if (dv[1] < 0)
-	{
-		yi = -1;
-		dv[1] = -dv[1];
-	}
-	d = 2 * dv[1] - dv[0];
-	while (a.x < b.x)
-	{
-		put_pixel(img, a.x, a.y, offset);
-		if (d > 0)
-		{
-			a.y += yi;
-			d = d + 2 * (dv[1] - dv[0]);
-		}
-		else
-			d = d + 2 * dv[1];
-		a.x++;
-	}
-}
-*/
-
 void	plot_line_low(t_iso a, t_iso b, t_data *img, t_off offset)
 {
 	int	*dv;
@@ -95,8 +59,7 @@ void	plot_line_low(t_iso a, t_iso b, t_data *img, t_off offset)
 	}
 }
 
-/*
-void	plot_line_high(t_iso a, t_iso b, t_data *img, t_cp offset)
+void	plot_line_high(t_iso a, t_iso b, t_data *img, t_off offset)
 {
 	int	*dv;
 	int	xi;
@@ -124,6 +87,34 @@ void	plot_line_high(t_iso a, t_iso b, t_data *img, t_cp offset)
 	}
 }
 */
+//TESTING
+void	plot_line_low(t_iso a, t_iso b, t_data *img, t_off offset)
+{
+	int	*dv;
+	int	yi;
+	int	d;
+
+	dv = line_change(a, b);
+	yi = 1;
+	if (dv[1] < 0)
+	{
+		yi = -1;
+		dv[1] = -dv[1];
+	}
+	d = 2 * dv[1] - dv[0];
+	while (a.x < b.x)
+	{
+		put_pixel(img, a.x + offset.x_off, a.y + offset.y_off, a.clr);
+		if (d > 0)
+		{
+			a.y += yi;
+			d = d + 2 * (dv[1] - dv[0]);
+		}
+		else
+			d = d + 2 * dv[1];
+		a.x++;
+	}
+}
 
 void	plot_line_high(t_iso a, t_iso b, t_data *img, t_off offset)
 {
@@ -141,7 +132,7 @@ void	plot_line_high(t_iso a, t_iso b, t_data *img, t_off offset)
 	d = 2 * dv[0] - dv[1];
 	while (a.y < b.y)
 	{
-		put_pixel(img, a.x, a.y, offset);
+		put_pixel(img, a.x + offset.x_off, a.y + offset.y_off, a.clr);
 		if (d > 0)
 		{
 			a.x += xi;

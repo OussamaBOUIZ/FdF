@@ -23,7 +23,7 @@
 # define W_H  1080
 # define W_W 1920
 # define B_S 1
-# define COLOR 0xeb3461  
+# define COLOR 0xa8edbb  
 # define B_OFF 0.8
 # define S_OFF 0.2
 # define U 50
@@ -102,9 +102,18 @@ typedef struct s_off
 {
 	int	x_off;
 	int	y_off;
+	
 }	t_off;
 
+typedef struct s_atoi
+{
+	int		val;
+	int		clr;
+}				t_atoi;
+
 int		ft_atoi(const char *str);
+t_atoi	s_atoi(char *str);
+int		hex_to_int(char *s);
 void	manage_error(int ac, char **av);
 int		check_map(char **map);
 void	check_neg(double *x0, double *y0, double *x1, double *y1);
@@ -124,7 +133,8 @@ char	**read_map(char *file);
 void	print_map(char **map);
 double	get_slope(double x0, double y0, double x1, double y1);
 double	get_const(double m, double x, double y);
-t_iso	to_isom(double x, double y, double z, t_u units);
+// t_iso	to_isom(double x, double y, double z, t_u units);
+t_iso	to_isom(double x, double y, t_atoi zee, t_u units);
 double	slope(t_iso a, t_iso b);
 void	swap(double *a, double *b);
 // void	plot_line(t_iso a, t_iso b, t_data *img, t_cp offset);
@@ -142,8 +152,8 @@ void	draw_line(t_iso a, t_iso b, void *m_id, void *w_id);
 // void	drawing(t_iso **iso_tb, int *row_col, t_data *img, t_cp offset);
 void	drawing(t_sh sh, int *row_col, t_data *img);
 void	sharp_line(void *m, void *w);
-// void	put_pixel(t_data *data, int x, int y, t_cp offset);
-void	put_pixel(t_data *data, int x, int y, t_off offset);
+// void	put_pixel(t_data *data, int x, int y, t_off offset);
+void	put_pixel(t_data *data, int x, int y, int color);
 void	free_double_p(char **strings);
 void	free_both(char **s1, char **s2);
 int		*map_dim(char **map);
