@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
@@ -43,7 +43,7 @@ typedef struct s_u
 	t_d	y;
 }			t_u;
 
-typedef struct	s_cp
+typedef struct s_cp
 {
 	int	x_off;
 	int	y_off;
@@ -69,7 +69,12 @@ typedef struct s_point
 	double	y;
 }		t_point;
 
-typedef t_point	t_iso;
+typedef struct s_iso
+{
+	double	x;
+	double	y;
+	int		clr;
+}				t_iso;
 
 typedef struct s_sqr
 {
@@ -146,7 +151,9 @@ int		*map_dim(char **map);
 void	display(t_data *img, int *dim, char **map);
 char	**check_get_map(int ac, char **av);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		find_max_z(char **map, int row, char ***cor);
+int		find_min_z(int row, char ***cor);
+int		find_max_z(int row, char ***cor);
+int		find_ext_z(int row, char ***cor);
 t_u		def_unit(int *dim, char **map, char ***cor);
 t_cp	get_offset(int *dim, char **map, char ***cord);
 t_d		max(t_d a, t_d b);

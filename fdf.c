@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 06:51:57 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/29 07:02:33 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/30 10:37:42 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,6 @@
 */
 /*
 
-int	main(int ac, char **av)
-{
-	char	**map;
-	int		*dim;
-	int		max_z;
-	t_iso	win_iso;
-	double	 unit;
-
-	unit = 75;
-	map = check_get_map(ac, av);
-	dim = map_dim(map);
-	max_z = find_max_z(map, dim[0]);
-	win_iso.x = (t_d)dim[1];
-	win_iso.y = fabs(((t_d)dim[1] + (t_d)dim[0]) / 2 - max_z);
-	printf("%i\n", max_z);
-	printf("win_iso.y : %.0f win_iso.x : %.0f\n", win_iso.y, win_iso.x);
-	return (0);
-}
-
-
 	The problem i still have now is that the program segfaults when it can't print
 
 
@@ -96,12 +76,10 @@ int	main(int ac, char **av)
 	img.img = mlx_new_image(mlx.m_id, W_W, W_H);
 	img.ad = mlx_get_data_addr(img.img, &img.bpp, &img.l_l, &img.endian);
 	dim = map_dim(map);
-	printf("The center of the window is ( %d, %d)\n", W_W / 2, W_H / 2);
 	display(&img, dim, map);
 	mlx_put_image_to_window(mlx.m_id, mlx.w_id, img.img, 0, 0);
 	mlx_key_hook(mlx.w_id, deal_key, (void *)0);
-	mlx_hook(mlx.w_id, 17, 0, close_window, NULL);   
-	// while (1);
+	mlx_hook(mlx.w_id, 17, 0, close_window, NULL);
 	mlx_loop(mlx.m_id);
 	return (0);
 }

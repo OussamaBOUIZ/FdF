@@ -6,11 +6,12 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:46:50 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/14 14:47:03 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/30 14:34:16 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
 
 int	ft_atoi(const char *str)
 {
@@ -26,7 +27,7 @@ int	ft_atoi(const char *str)
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-		sign *= -1;
+			sign *= -1;
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
@@ -40,3 +41,44 @@ int	ft_atoi(const char *str)
 	}
 	return (num * sign);
 }
+
+
+/*
+typedef struct s_atoi
+{
+	int		num;
+	int		clr;
+}				t_atoi;
+
+
+
+
+t_atoi	ft_atoi_struct(const char *str)
+{
+	int		i;
+	t_atoi	zee;
+	int		sign;
+
+	i = 0;
+	zee.num = 0;
+	sign = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{	
+		zee.num = zee.num * 10 + str[i] - '0';
+		i++;
+	}
+	if (str[i] == ',')
+		zee.clr = ft_putnbr_hex(&str[i + 1]);
+	zee.num *= sign;
+	return (zee);
+}
+
+*/

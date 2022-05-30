@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:50:33 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/29 06:55:57 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/30 14:39:22 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,18 @@ t_u	def_unit(int *dim, char **map, char ***cor)
 	t_u	units;
 	t_d	iso_w;
 	t_d	iso_h;
-	int	max_z;
+	int	ext_z;
 
-	max_z = find_max_z(map, dim[0], cor);
-	iso_w = (t_d)dim[1];
-	iso_h = fabs(((t_d)dim[1] + (t_d)dim[0]) * 3 / 4 - max_z);
+	(void)map;
+	ext_z = find_ext_z(dim[0], cor);
+	printf("EXT Z : %d\n", ext_z);
+	iso_w = fabs((t_d)dim[1] + (t_d)dim[0]);
+	// iso_w = (t_d)dim[1];
+	iso_h = fabs(((t_d)dim[1] + (t_d)dim[0]) * 3 / 4 + ext_z);
 	printf(" ISO_W : %.0f, ISO_H : %.2f\n", iso_w, iso_h);
-	units.x = W_W / (2 * iso_w);
-	units.y = W_H / (2 * iso_h);
-	printf("units.x : %.1f, units.y : %.1f\n", units.x, units.y);
+	units.x = W_W * 4 / (5 * iso_w);
+	units.y = W_H * 4 / (5 * iso_h);
+	printf("U_X : %.1f, U_Y : %.1f\n", units.x, units.y);
 	// free_double_p(map);
 	return (units);
 }

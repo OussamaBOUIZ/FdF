@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 07:54:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/29 11:42:09 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/30 10:44:03 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,37 +66,10 @@ t_sh	cords_atoi(char ***cor, int *dim, char **map)
 		}
 		j++;
 	}
-	printf("max_x : %.0f, min_x : %.0f\n", sh.peri.max_x, sh.peri.min_x);
-	printf("max_y : %.0f, min_y : %.0f\n", sh.peri.max_y, sh.peri.min_y);
-	printf("The center of the shape is (x : %.0f, y : %.0f)\n", (sh.peri.max_x + sh.peri.min_x) / 2, (sh.peri.max_y + sh.peri.min_y) / 2);
 	return (sh);
 }
 
 /*
-
-t_iso	**cords_atoi(char ***cor, int *dim, char **map)
-{
-	t_iso	**iso;
-	int		i;
-	int		j;
-	t_u		units;
-
-	iso = iso_square(dim[0], dim[1]);
-	j = 0;
-	units = def_unit(dim, map, cor);
-	while (cor[j])
-	{
-		i = 0;
-		while (cor[j][i])
-		{
-			iso[j][i] = to_isom((t_d)i, (t_d)j, ft_atoi(cor[j][i]), units);
-			printf("( x : %.0f, y : %.0f )\n", iso[j][i].x, iso[j][i].y);
-			i++;
-		}
-		j++;
-	}
-	return (iso);
-}
 void	print_iso_table(t_iso **iso, int col)
 {
 	int	j;
