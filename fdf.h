@@ -1,4 +1,4 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 06:51:27 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/29 11:40:31 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:14:15 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
-//2880x1620
 # define W_H  1080
 # define W_W 1920
 # define B_S 1
@@ -102,7 +101,6 @@ typedef struct s_off
 {
 	int	x_off;
 	int	y_off;
-	
 }	t_off;
 
 typedef struct s_atoi
@@ -132,9 +130,7 @@ int		count_lines(int fd);
 char	**read_map(char *file);
 void	print_map(char **map);
 double	get_const(double m, double x, double y);
-// t_iso	to_isom(double x, double y, double z, t_u units);
 t_iso	to_isom(double x, double y, t_atoi zee, t_u units);
-// void	plot_line(t_iso a, t_iso b, t_data *img, t_cp offset);
 void	plot_line(t_iso a, t_iso b, t_data *img, t_off offset);
 void	draw_grid(void *m_id, void *w_id);
 int		*get_map_dim(char **map);
@@ -142,19 +138,15 @@ char	***get_cords(char **map, int row);
 void	print_tri(char ***s);
 int		ptr_str_len(char **s);
 t_iso	**iso_square(int row, int col);
-// t_iso	**cords_atoi(char ***cords, int *dim, char **map);
 t_sh	cords_atoi(char ***cords, int *dim, char **map);
 void	print_iso_table(t_iso **iso, int col);
 void	draw_line(t_iso a, t_iso b, void *m_id, void *w_id);
-// void	drawing(t_iso **iso_tb, int *row_col, t_data *img, t_cp offset);
 void	drawing(t_sh sh, int *row_col, t_data *img);
 void	sharp_line(void *m, void *w);
-// void	put_pixel(t_data *data, int x, int y, t_off offset);
 void	put_pixel(t_data *data, int x, int y, int color);
 void	free_double_p(char **strings);
 void	free_both(char **s1, char **s2);
 int		*map_dim(char **map);
-// void	display(void **mlx, int *dim, char **map);
 void	display(t_data *img, int *dim, char **map);
 char	**check_get_map(int ac, char **av);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 07:54:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/30 19:36:27 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:11:36 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ t_sh	cords_atoi(char ***cor, int *dim, char **map)
 	units = def_unit(dim, map, cor);
 	while (cor[j])
 	{
-		i = 0;
-		while (cor[j][i])
+		i = -1;
+		while (cor[j][++i])
 		{
 			sh.iso[j][i] = to_isom((t_d)i, (t_d)j, s_atoi(cor[j][i]), units);
 			sh.peri = get_perimeter(sh.peri, sh.iso[j][i].x, sh.iso[j][i].y);
-			i++;
 		}
 		j++;
 	}
+	free_double_p(map);
 	return (sh);
 }

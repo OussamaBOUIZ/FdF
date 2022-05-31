@@ -17,7 +17,7 @@ OBJECTS =  $(FUNCTIONS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECTS)
-	$(CC) $(CFLAGS) $(FS) $(LINK_MLX) $(OBJECTS) -o $(NAME)
+	$(CC) $(CFLAGS) $(LINK_MLX) $(OBJECTS) -o $(NAME)
 	@echo "FDF CREATED"
 
 clean :
