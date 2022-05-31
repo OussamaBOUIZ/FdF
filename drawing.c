@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:07:23 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/31 15:00:22 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:46:52 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	drawing(t_sh sh, int *row_col, t_data *img)
 	int		i;
 	t_off	offset;
 
-	printf("row_col[0] : %d, row_col[1] : %d\n", row_col[0], row_col[1]);
 	j = 0;
 	offset = cal_offset(sh);
 	while (j <= row_col[0] - 1)
