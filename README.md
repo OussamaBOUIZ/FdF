@@ -24,7 +24,7 @@ For each single string in this map, the program forms a structure as below:
 		double	x;
 		double	y;
 		int		clr;
-	}				t_iso;
+	}		t_iso;
 
 
 
