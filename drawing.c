@@ -6,15 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:07:23 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/31 15:46:52 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:21:50 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-/*
-	xc + off_x = W_W / 2;
-	yc + off_y = W_H / 2;
-*/
 
 t_off	cal_offset(t_sh sh)
 {
@@ -39,13 +35,14 @@ void	drawing(t_sh sh, int *row_col, t_data *img)
 	offset = cal_offset(sh);
 	while (j <= row_col[0] - 1)
 	{
-		i = -1;
-		while (++i <= row_col[1] - 1)
+		i = 0;
+		while (i <= row_col[1] - 1)
 		{
 			if (i < row_col[1] - 1)
 				plot_line(sh.iso[j][i], sh.iso[j][i + 1], img, offset);
 			if (j < row_col[0] - 1)
 				plot_line(sh.iso[j][i], sh.iso[j + 1][i], img, offset);
+			i++;
 		}
 		j++;
 	}

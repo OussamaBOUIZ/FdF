@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 06:51:57 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/31 15:01:55 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:22:29 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,41 @@
 			H : 1920
 			W : 1080
 
+
+	ABOUT THE MLX:
+		- mlx_init() establishes a connection to the correct graphical system and 
+		will return a void* which
+		holds the location of our current MLX instance.
+		- mlx_new_window() will return a pointer to the window we just created.
+		- mlx_loop() will initiate the window rendering.
+
 */
+void	win_id_error(void *w_id)
+{
+	ft_putstr("Error occured in mlx_new_window()\n");
+	free(w_id);
+	exit(EXIT_FAILURE);
+}
+
+void	mlx_id_error(void)
+{
+	ft_putstr("Error occured in mlx_init()\n");
+	exit(EXIT_FAILURE);
+}
+
+void	image_error(void *img)
+{
+	ft_putstr("Error occured in mlx_new_image()\n");
+	free(img);
+	exit(EXIT_FAILURE);
+}
+
+void	get_data_addr_error(char *ad)
+{
+	ft_putstr("Error occured in mlx_get_data_addr()\n");
+	free(ad);
+	exit(EXIT_FAILURE);
+}
 
 int	main(int ac, char **av)
 {
@@ -53,9 +87,17 @@ int	main(int ac, char **av)
 
 	map = check_get_map(ac, av);
 	mlx.m_id = mlx_init();
+	if (!mlx.m_id)
+		mlx_id_error();
 	mlx.w_id = mlx_new_window(mlx.m_id, W_W, W_H, "FDF");
+	if (!mlx.w_id)
+		win_id_error(mlx.w_id);
 	img.img = mlx_new_image(mlx.m_id, W_W, W_H);
+	if (!img.img)
+		image_error(img.img);
 	img.ad = mlx_get_data_addr(img.img, &img.bpp, &img.l_l, &img.endian);
+	if (!img.ad)
+		get_data_addr_error(img.ad);
 	dim = map_dim(map);
 	display(&img, dim, map);
 	mlx_put_image_to_window(mlx.m_id, mlx.w_id, img.img, 0, 0);

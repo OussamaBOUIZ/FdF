@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:29:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/31 14:41:20 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:25:11 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ char	***get_cords(char **map, int row)
 	i = 0;
 	cords_s = malloc(sizeof(char **) * (row + 1));
 	if (!cords_s)
-		return (NULL);
+		exit(EXIT_FAILURE);
 	while (map[i])
 	{
 		cords_s[i] = ft_split((map[i]), ' ');
+		if (!cords_s[i])
+			exit (EXIT_FAILURE);
 		i++;
 	}
 	cords_s[i] = 0;

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:14:15 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/30 19:26:46 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:18:53 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ void	manage_error(int ac, char **av)
 {
 	(void)av;
 	if (ac != 2)
+	{
+		ft_putstr("BAD ARGUMENTS ❌\n");
 		exit(EXIT_FAILURE);
+	}
 	if (-1 == open(av[1], O_RDWR))
 	{
 		ft_putstr("INVALID PATH ❌\n");
@@ -48,13 +51,13 @@ int	check_map(char **map)
 		if (d_str_len(s1) != d_str_len(s2))
 		{
 			free_both(s1, s2);
-			ft_putstr("The map is NOT valid! ❌\n");
+			ft_putstr("The map is NOT VALID! ❌\n");
 			return (1);
 		}
 		free_both(s1, s2);
 		i++;
 	}
-	ft_putstr("The map is SUPER valid! ✅\n");
+	ft_putstr("The map is SUPER VALID! ✅\n");
 	return (0);
 }
 

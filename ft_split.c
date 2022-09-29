@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 09:27:47 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/21 16:55:33 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:25:00 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	alloc_place_string(int *bords, size_t k, char **split, char *s)
 	e = bords[1];
 	split[k] = malloc(sizeof(char) * (e - st + 2));
 	if (!split[k])
-		return (0);
+		exit(EXIT_FAILURE);
 	j = -1;
 	while (++j <= e - st)
 		split[k][j] = s[st + j];

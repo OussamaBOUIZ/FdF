@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 09:06:03 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/09 09:08:33 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:23:34 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*ft_strdup(char *s1)
 	s = (char *)s1;
 	copy = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!copy)
-		return (0);
+		exit(EXIT_FAILURE);
 	while (s[a])
 	{
 		copy[a] = s[a];

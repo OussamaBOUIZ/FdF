@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:33:17 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/31 10:29:10 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:26:16 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	*map_dim(char **map)
 	r = 0;
 	c = 0;
 	dim = malloc(sizeof(int) * 2);
+	if (!dim)
+		exit(EXIT_FAILURE);
 	line = ft_split(map[0], ' ');
 	while (map[r])
 		r++;

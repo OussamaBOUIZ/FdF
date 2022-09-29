@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 16:29:42 by obouizga          #+#    #+#             */
-/*   Updated: 2022/05/31 15:13:21 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:26:51 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	put_pixel(t_data *data, int x, int y, int color)
 {
-	my_mlx_pixel_put(data, x, y, color);
+	if (x < W_W && y < W_H)
+		my_mlx_pixel_put(data, x, y, color);
 }
 
 int	*line_change(t_iso a, t_iso b)
@@ -23,7 +24,7 @@ int	*line_change(t_iso a, t_iso b)
 
 	big_d = malloc(sizeof(int) * 2);
 	if (!big_d)
-		return (0);
+		exit(EXIT_FAILURE);
 	big_d[0] = b.x - a.x;
 	big_d[1] = b.y - a.y;
 	return (big_d);
@@ -92,9 +93,7 @@ void	plot_line(t_iso a, t_iso b, t_data *img, t_off offset)
 	if (fabs(b.y - a.y) < fabs(b.x - a.x))
 	{
 		if (a.x > b.x)
-		{
 			plot_line_low(b, a, img, offset);
-		}
 		else
 			plot_line_low(a, b, img, offset);
 	}
