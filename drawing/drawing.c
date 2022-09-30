@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:07:23 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 16:21:50 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:16:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
 t_off	cal_offset(t_sh sh)
 {

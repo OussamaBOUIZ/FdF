@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 06:53:31 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 16:23:47 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:16:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
 void	ft_putchar(char c)
 {

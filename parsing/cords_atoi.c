@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 07:54:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 16:19:45 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:16:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
 t_iso	**iso_square(int row, int col)
 {

@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 15:41:03 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 16:23:15 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:16:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
 void	free_both(char **s1, char **s2)
 {

@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 09:06:03 by obouizga          #+#    #+#             */
-/*   Updated: 2022/06/03 15:23:34 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:16:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
 size_t	ft_strlen(const char *str)
 {

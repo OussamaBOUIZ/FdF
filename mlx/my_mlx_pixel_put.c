@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   to_isom.c                                          :+:      :+:    :+:   */
+/*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 11:56:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 16:27:53 by obouizga         ###   ########.fr       */
+/*   Created: 2022/05/22 14:25:58 by obouizga          #+#    #+#             */
+/*   Updated: 2022/09/30 16:16:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-t_iso	to_isom(double x, double y, t_atoi zee, t_u units)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	t_iso	iso;
+	char	*dst;
 
-	iso.x = (x - y);
-	iso.y = ((x + y) * 3 / 4 - zee.val);
-	iso.x = iso.x * units.x;
-	iso.y = iso.y * units.y;
-	iso.clr = zee.clr;
-	return (iso);
+	dst = data->ad + (y * data->l_l + x * (data->bpp / 8));
+	*(unsigned int *)dst = color;
 }

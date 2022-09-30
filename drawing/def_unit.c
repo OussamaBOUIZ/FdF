@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:50:33 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 16:20:18 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:16:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 /*
 		units.x = WIN_WIDTH / (2 * ISO_WIDTH);
 		units.y = WIN_HEIGHT / (2 * ISO_HEIGHT);

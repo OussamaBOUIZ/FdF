@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_map.c                                        :+:      :+:    :+:   */
+/*   handle_closing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 09:22:16 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 16:27:02 by obouizga         ###   ########.fr       */
+/*   Created: 2022/05/30 19:30:31 by obouizga          #+#    #+#             */
+/*   Updated: 2022/09/30 16:16:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-void	print_map(char **map)
+int	deal_key(int key, void *param)
 {
-	int	i;
+	(void)param;
+	if (key == 53)
+		exit(1);
+	return (0);
+}
 
-	i = 0;
-	while (map[i])
-	{
-		ft_putstr(map[i++]);
-		ft_putchar('\n');
-	}
+int	close_window(void)
+{
+	exit(0);
 }

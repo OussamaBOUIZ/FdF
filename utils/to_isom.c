@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cords.c                                        :+:      :+:    :+:   */
+/*   to_isom.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/16 16:29:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 16:25:11 by obouizga         ###   ########.fr       */
+/*   Created: 2022/05/09 11:56:48 by obouizga          #+#    #+#             */
+/*   Updated: 2022/09/30 16:16:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-char	***get_cords(char **map, int row)
+t_iso	to_isom(double x, double y, t_atoi zee, t_u units)
 {
-	char	***cords_s;
-	int		i;
+	t_iso	iso;
 
-	i = 0;
-	cords_s = malloc(sizeof(char **) * (row + 1));
-	if (!cords_s)
-		exit(EXIT_FAILURE);
-	while (map[i])
-	{
-		cords_s[i] = ft_split((map[i]), ' ');
-		if (!cords_s[i])
-			exit (EXIT_FAILURE);
-		i++;
-	}
-	cords_s[i] = 0;
-	return (cords_s);
+	iso.x = (x - y);
+	iso.y = ((x + y) * 3 / 4 - zee.val);
+	iso.x = iso.x * units.x;
+	iso.y = iso.y * units.y;
+	iso.clr = zee.clr;
+	return (iso);
 }

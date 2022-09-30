@@ -26,6 +26,9 @@ For each single string in this map, the program forms a structure as below:
 		int		clr;
 	}		t_iso;
 
+This structure composes an element of a 2D array. 
+As We are building a 3D representation from each single number in the map, the program retrieves the x, y, z and color values. The **x** is the position of the string horizantally, the **y** is its  position vertically, the **z** its value, and in case there's a color which is usually added after a **","** to the number, otherwise there's a default color declared in the header file. Indeed, the wireframe is displayed in a window.
+
 
 
 

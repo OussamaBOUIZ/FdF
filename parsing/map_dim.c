@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
+/*   map_dim.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/22 14:25:58 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 16:26:26 by obouizga         ###   ########.fr       */
+/*   Created: 2022/05/17 15:33:17 by obouizga          #+#    #+#             */
+/*   Updated: 2022/09/30 16:16:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+int	*map_dim(char **map)
 {
-	char	*dst;
+	char	**line;
+	int		*dim;
+	int		c;
+	int		r;
 
-	dst = data->ad + (y * data->l_l + x * (data->bpp / 8));
-	*(unsigned int *)dst = color;
+	r = 0;
+	c = 0;
+	dim = malloc(sizeof(int) * 2);
+	if (!dim)
+		exit(EXIT_FAILURE);
+	line = ft_split(map[0], ' ');
+	while (map[r])
+		r++;
+	while (line[c])
+		c++;
+	dim[0] = r;
+	dim[1] = c;
+	free_double_p(line);
+	return (dim);
 }

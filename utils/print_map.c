@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 16:30:20 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 16:20:30 by obouizga         ###   ########.fr       */
+/*   Created: 2022/05/09 09:22:16 by obouizga          #+#    #+#             */
+/*   Updated: 2022/09/30 16:16:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-void	display(t_data *img, int *dim, char **map)
+void	print_map(char **map)
 {
-	char	***cord;
-	t_sh	shape;
+	int	i;
 
-	cord = get_cords(map, dim[0]);
-	shape = cords_atoi(cord, dim, map);
-	drawing(shape, dim, img);
-	free_double_p(map);
-	free_tri_p(cord);
+	i = 0;
+	while (map[i])
+	{
+		ft_putstr(map[i++]);
+		ft_putchar('\n');
+	}
 }

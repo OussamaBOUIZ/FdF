@@ -6,11 +6,30 @@ RM = rm -rf
 FS = -fsanitize=address
 CC = cc
 
-FUNCTIONS =  ft_puts.c gnl.c utils.c read_map.c print_map.c ft_split.c fdf.c \
-			ft_atoi.c to_isom.c  get_cords.c print_tri.c\
-			map_dim.c cords_atoi.c plot_line.c free_utils.c check_get_map.c display.c\
-			drawing.c my_mlx_pixel_put.c find_ext_z.c def_unit.c hex_to_int.c s_atoi.c\
-			handle_closing.c
+FUNCTIONS = drawing/def_unit.c \
+			drawing/display.c \
+			drawing/drawing.c \
+			drawing/find_ext_z.c \
+			drawing/my_mlx_pixel_put.c \
+			drawing/plot_line.c \
+			parsing/check_get_map.c \
+			parsing/cords_atoi.c \
+			parsing/get_cords.c \
+			parsing/map_dim.c \
+			parsing/read_map.c \
+			utils/free_utils.c \
+			utils/ft_atoi.c \
+			utils/ft_puts.c \
+			utils/ft_split.c \
+			utils/gnl.c \
+			utils/handle_closing.c \
+			utils/hex_to_int.c \
+			utils/print_map.c \
+			utils/print_tri.c \
+			utils/s_atoi.c \
+			utils/to_isom.c \
+			utils/utils.c\
+			fdf.c
 
 OBJECTS =  $(FUNCTIONS:.c=.o)
 

@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tri.c                                        :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 15:30:45 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 16:27:10 by obouizga         ###   ########.fr       */
+/*   Created: 2022/05/09 09:13:56 by obouizga          #+#    #+#             */
+/*   Updated: 2022/09/30 16:16:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-void	print_tri(char ***cords)
+char	**read_map(char *file)
 {
-	int	i;
-	int	j;
+	int		fd;
+	char	*map_s;
+	char	*next_l;
+	char	**map;
 
-	i = 0;
-	while (cords[i])
+	fd = open(file, O_RDONLY);
+	map_s = get_next_line(fd);
+	if (!map_s)
 	{
-		j = 0;
-		while (cords[i][j])
-		{
-			ft_putstr(cords[i][j]);
-			ft_putchar(' ');
-			j++;
-		}
-		ft_putchar('\n');
-		i++;
+		ft_putstr("🚨 EMPTY FILE\n");
+		exit(EXIT_FAILURE);
 	}
+	next_l = get_next_line(fd);
+	while (next_l)
+	{
+		map_s = ft_strjoin(map_s, next_l);
+		free(next_l);
+		next_l = get_next_line(fd);
+	}
+	map = ft_split(map_s, '\n');
+	free(map_s);
+	return (map);
 }

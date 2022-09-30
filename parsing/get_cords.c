@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_closing.c                                   :+:      :+:    :+:   */
+/*   get_cords.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/30 19:30:31 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 16:25:29 by obouizga         ###   ########.fr       */
+/*   Created: 2022/05/16 16:29:56 by obouizga          #+#    #+#             */
+/*   Updated: 2022/09/30 16:16:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-int	deal_key(int key, void *param)
+char	***get_cords(char **map, int row)
 {
-	(void)param;
-	if (key == 53)
-		exit(1);
-	return (0);
-}
+	char	***cords_s;
+	int		i;
 
-int	close_window(void)
-{
-	exit(0);
+	i = 0;
+	cords_s = malloc(sizeof(char **) * (row + 1));
+	if (!cords_s)
+		exit(EXIT_FAILURE);
+	while (map[i])
+	{
+		cords_s[i] = ft_split((map[i]), ' ');
+		if (!cords_s[i])
+			exit (EXIT_FAILURE);
+		i++;
+	}
+	cords_s[i] = 0;
+	return (cords_s);
 }
