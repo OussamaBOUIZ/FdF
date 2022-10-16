@@ -32,9 +32,15 @@ As We are building a **3D representation (isometric projection)**, from each sin
 	iso_X = X + Y;
 	iso_Y = (X + Y) * 3 / 4 - Z;
 
-By The end of this process, we get a decent compound data structure containing basically the coordinates of all the dots composing the map, so in order to get the whole wireframe we should connect the dots. Practically each dot gets linked to its **right neighbor** and its **south neighbor**. Connecting two points is basically drawing a **line segment** in which those two points both are starting and stopping points and this drawing is implemented through the [*Bresenham Algorithm*](https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm).
+By The end of this process, we get a decent compound data structure containing basically the coordinates of all the dots composing the map, so in order to get the whole wireframe we should connect the dots, which takes us to the second step.
+
+### Linking The Dots:
+ Practically each dot gets linked to its **right neighbor** and its **south neighbor**. Connecting two points is basically drawing a **line segment** in which those two points both are starting and stopping points and this drawing is implemented through the [*Bresenham Algorithm*](https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm).
 <br/>
 The reader may be wondering: *What about these ending points in the map which don't have neighbors?*
+
+The answer:
+Too simply, the program determines the position of a given dot, and decides upon that if it should be linked to its neighbor or not.
 
 
 
