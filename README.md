@@ -1,5 +1,5 @@
 # FdF Wireframe Model or 'Fil de Fer'
-
+![1337](https://github.com/OussamaBOUIZ/FdF/blob/main/img/1337.png?raw=true)
 This C project is about devising a program which overall displays a **3D representation**,
 precisely a wirefram model of a given map. Essentially, it converts an ordinary text file (so-called : Map) into a visual material in a window using the 42 school graphical library: the MiniLibx. Its a discovery of basics of **graphics programming**, notably how to position dots in space and how to link them.
 
@@ -16,6 +16,8 @@ The program reads the Map after primarly assuring its validity and produces an o
 	0 0 0 0 0 0 0 0 1 2 3
 	0 0 0 0 0 0 0 0 0 1 2
 	0 0 0 0 0 0 0 0 0 0 1
+
+![1337](https://github.com/OussamaBOUIZ/FdF/blob/main/img/10.png?raw=true)
 
 For each single string in this map, the program forms a structure as below:
 
@@ -42,6 +44,6 @@ The reader may be wondering: *What about these ending points in the map which do
 The answer:
 Too simply, the program determines the position of a given dot, and decides upon that if it should be linked to its neighbor or not.
 
-
+![1337](https://github.com/OussamaBOUIZ/FdF/blob/main/img/mars.png?raw=true)
 
 
